@@ -6,6 +6,7 @@ using UnityEngine.VFX;
 public class vfxChangeAlpha : MonoBehaviour
 {
     public float decreaseRate = 0.2f;
+    public setLoading setLoadingScript;
 
     private VisualEffect ve;
 
@@ -48,14 +49,20 @@ public class vfxChangeAlpha : MonoBehaviour
             newAlpha = 1.0f;
         }
 
-        ve.SetFloat("Alpha", newAlpha);
-        
-        // StartCoroutine(changeAlpha());
+        //ve.SetFloat("Alpha", newAlpha);
 
+
+        // get loading counter from ./setLoading.cs
+        float num = (float)getCounter();
+        float alpha = Mathf.Max(0.0f, (100.0f - num) / 100.0f);
+
+        Debug.Log(alpha);
+        ve.SetFloat("Alpha", alpha);
     }
 
-    public IEnumerator changeAlpha()
+    public int getCounter()
     {
-        yield return new WaitForSeconds(6);
+        int num = FindObjectOfType<setLoading>().passCounter();
+        return num;
     }
 }

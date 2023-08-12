@@ -8,7 +8,7 @@ public class setLoading : MonoBehaviour
 {
     //public Text counterText;
     public TMP_Text counterText;
-
+    public int counter;
 
     // Start is called before the first frame update
     void Start()
@@ -52,20 +52,15 @@ public class setLoading : MonoBehaviour
 
     }
 
-
-    public IEnumerator downCount()
-    {
-        yield return new WaitForSeconds(10);
-    }
-
     public IEnumerator increaseCount()
     {
-        int counter = int.Parse(counterText.text);
+        counter = int.Parse(counterText.text);
 
         while (counter < 100)
         {
             int increase = Random.Range(1, 10);
             counter += increase;
+
             if (counter > 100)
             {
                 counterText.text = "100";
@@ -78,5 +73,11 @@ public class setLoading : MonoBehaviour
         counterText.text = "100";
         enabled = false;
         
+    }
+
+    // pass counter to vfxChangeAlpha.cs
+    public int passCounter()
+    { 
+        return counter;
     }
 }
