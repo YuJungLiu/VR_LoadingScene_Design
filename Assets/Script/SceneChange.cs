@@ -56,7 +56,7 @@ public class SceneChange : MonoBehaviour
     {
         StartCoroutine(FadeOutSound());
         vfx.Stop();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(sceneToLoad);
     }
     private IEnumerator FadeOutSound()
