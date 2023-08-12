@@ -11,6 +11,10 @@ public class SceneChange : MonoBehaviour
     public VisualEffect vfx;
     public string sceneToLoad;
     public float fadeDuration = 2f;
+    public int totalSecond = 0;
+
+    public int counter = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +24,10 @@ public class SceneChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            StartCoroutine(PressButton());
+        }
     }
     public void Scene(){
         StartCoroutine(PressButton());
@@ -29,15 +36,21 @@ public class SceneChange : MonoBehaviour
     private IEnumerator PressButton()
     {
         Effect();
-        yield return new WaitForSeconds(6);
+        //Cube.Tranform.Scale =
+        Cube.SetActive(false);
+        Debug.Log(totalSecond);
+        yield return new WaitForSeconds(totalSecond);
         StartCoroutine(SceneLoader());
     }
     public void Effect()
     {
         sound.Play();
         vfx.Play();
+
         //VFX Fade
-        Debug.Log("Effect!");
+        StartCoroutine(increaseCount());
+        
+        //Debug.Log("Effect!");
     }
     public IEnumerator SceneLoader()
     {
@@ -57,5 +70,47 @@ public class SceneChange : MonoBehaviour
         }
         sound.volume = 0;
         sound.Stop();
+    }
+
+
+    // counter
+    public IEnumerator increaseCount()
+    {
+        //int counter = 0;
+        totalSecond = Random.Range(8, 12);  // 8
+        float iterNum = totalSecond / 0.5f;
+        int increase = 100/(int)iterNum;
+
+        for(int i=0; i<iterNum; i++)
+        {
+            counter += increase; 
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        if(counter <= 100)
+        {
+            counter = 100;
+        }
+
+        //while (counter < 100)
+        //{
+        //    // int increase = Random.Range(1, 10);
+        //    counter += increase;
+            
+        //    if (counter > 100)
+        //    {
+        //        counter = 100;
+        //        break;
+        //    }
+            
+        //    yield return new WaitForSeconds(0.5f);
+        //}
+    }
+
+    // pass counter to vfxChangeAlpha.cs
+    public int passCounter()
+    {
+        //Debug.Log(counter);
+        return counter;
     }
 }
