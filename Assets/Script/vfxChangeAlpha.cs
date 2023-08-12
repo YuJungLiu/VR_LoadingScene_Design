@@ -55,7 +55,7 @@ public class vfxChangeAlpha : MonoBehaviour
         // get loading counter from ./setLoading.cs
         float num = (float)getCounter();
         float alpha = Mathf.Max(0.0f, (100.0f - num) / 100.0f);
-
+        Debug.Log(alpha);
         ve.SetFloat("Alpha", alpha);
     }
 
