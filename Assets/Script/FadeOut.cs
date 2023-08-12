@@ -5,7 +5,7 @@ using UnityEngine;
 public class FadeOut : MonoBehaviour
 {
     public GameObject blackoutPlane; // 你的黑幕物體
-    public float fadeDuration = 2.0f; // 漸進時間（秒）
+    public float fadeDuration = 4.0f; // 漸進時間（秒）
 
     private Material blackoutMaterial;
     private Color initialColor;
