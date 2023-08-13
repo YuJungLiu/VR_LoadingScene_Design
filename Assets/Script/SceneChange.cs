@@ -56,7 +56,7 @@ public class SceneChange : MonoBehaviour
     {
         StartCoroutine(FadeOutSound());
         vfx.Stop();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(4f);
         SceneManager.LoadScene(sceneToLoad);
     }
     private IEnumerator FadeOutSound()
@@ -77,7 +77,7 @@ public class SceneChange : MonoBehaviour
     public IEnumerator increaseCount()
     {
         //int counter = 0;
-        totalSecond = Random.Range(8, 12);  // 8
+        totalSecond = Random.Range(10, 14);  // 8
         float iterNum = totalSecond / 0.5f;
         int increase = 100/(int)iterNum;
 
