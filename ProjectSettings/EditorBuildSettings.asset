@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/NewLine.unity
     guid: 48191b3e9ec29384d87dd3f309cf01b7
   - enabled: 1
+    path: Assets/Scenes/NewLight.unity
+    guid: 7b5bcb30c4411054db2c1ed9f42fe186
+  - enabled: 1
     path: Assets/Scenes/NewGame.unity
     guid: c35a940f004269548a5871e0021cd85f
   m_configObjects:
